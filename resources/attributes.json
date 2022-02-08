@@ -1,0 +1,26 @@
+[
+    {
+        "imagePath": "imagePath1",
+        "group": "hat"
+    },
+    {
+        "imagePath": "imagePath2",
+        "group": "towel"
+    },
+    {
+        "imagePath": "imagePath3",
+        "group": "towel2"
+    },
+    {
+        "imagePath": "imagePath4",
+        "group": "hat"
+    },
+    {
+        "imagePath": "imagePath5",
+        "group": "towel"
+    },
+    {
+        "imagePath": "imagePath6",
+        "group": "towel2"
+    }
+]
