@@ -15,6 +15,9 @@ import java.util.UUID
 import java.io.FileWriter
 import java.nio.file.Path
 import java.io.File
+import org.apache.commons.io.FileUtils
+
+FileUtils.deleteDirectory(new File("./output"))
 
 val baseEntity =
   Json.parse(new FileInputStream("./resources/base-entity.json")).as[BaseEntity]
@@ -23,31 +26,23 @@ val loadedAttributes = Json
   .as[Seq[Attribute]]
   
 
-if (Configuration.maxAttributes > loadedAttributes.map(_.group).distinct.size)
-  throw new Exception("'maxAttributes' can't be larger than 'attributes.flatMap(_.map(_.group)).distinct.size'")
-
-if (Configuration.minAttributes > Configuration.maxAttributes || Configuration.minAttributes < 0)
-  throw new Exception("'minAttributes' can't be larger than 'maxAttributes', or less than 0")
-
-val attributes = loadedAttributes.map(Some(_)) ++ Iterator.continually(None).take(Configuration.minAttributes).toSeq
+if (Configuration.combinations > loadedAttributes.map(_.group).distinct.size)
+  throw new Exception("'combinations' can't be larger than 'attributes.flatMap(_.map(_.group)).distinct.size'")
 
 
-val entities = CharthesianGenerator
- .recursiveCharthesian(attributes.map(Seq(_)), attributes, Configuration.maxAttributes)
- .filter(x => x.filter(_.nonEmpty).distinct.size == x.filter(_.nonEmpty).size)
- .filter{ combination =>
-  combination.flatMap(_.toSeq).map(_.group).distinct.size == combination.flatMap(_.toSeq).size
-}
-.map(_.flatten)
-.filter(_.size >= Configuration.minAttributes)
+val entities = 
+loadedAttributes
+.combinations(Configuration.combinations)
+.filter(combinations => combinations.distinctBy(_.group).size == Configuration.combinations)
 .map(combination => Entity(UUID.randomUUID().toString(), baseEntity, None, combination))
 .map(ImageProcessing.drawEntity(_, "./output/images"))
+.toSeq
 
 val file = new File("./output/entities.json")
 file.getParentFile().mkdirs()
 file.createNewFile()
 val writer = new FileWriter(file)
 
-writer.write(Json.toJson(entities).toString())
+writer.write(Json.prettyPrint(Json.toJson(entities)))
  
 writer.close()
