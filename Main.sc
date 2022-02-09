@@ -13,6 +13,8 @@ import Util._
 import scala.util.Random
 import java.util.UUID
 import java.io.FileWriter
+import java.nio.file.Path
+import java.io.File
 
 val baseEntity =
   Json.parse(new FileInputStream("./resources/base-entity.json")).as[BaseEntity]
@@ -41,7 +43,10 @@ val entities = CharthesianGenerator
 .map(combination => Entity(UUID.randomUUID().toString(), baseEntity, None, combination))
 .map(ImageProcessing.drawEntity(_, "./output/images"))
 
-val writer = new FileWriter("./outpuit/entities.json")
+val file = new File("./output/entities.json")
+file.getParentFile().mkdirs()
+file.createNewFile()
+val writer = new FileWriter(file)
 
 writer.write(Json.toJson(entities).toString())
  

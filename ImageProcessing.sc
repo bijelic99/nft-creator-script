@@ -7,13 +7,22 @@ import com.sksamuel.scrimage.ImmutableImage
 import com.sksamuel.scrimage.nio.ImageWriter
 import com.sksamuel.scrimage.nio.PngWriter
 import java.nio.file.Path
+import java.io.File
+
+import scala.util.chaining._
 
 def drawEntity(entity: Entity, folder: String): Entity = {
-    val entityImage = ImmutableImage.loader().fromFile(entity.baseEntity.imagePath).copy()
-    entity.attributes.foreach{ attribute =>
-        val attributeImage = ImmutableImage.loader.fromFile(attribute.imagePath)
-        entityImage.overlay(attributeImage, 0, 0)    
-    }
-    val savePath = entityImage.output(PngWriter.NoCompression, Path.of(folder, s"${entity.id}.png"))
-    entity.copy(imagePath = Some(savePath.toString()))
+  val baseImageCopy =
+    ImmutableImage.loader().fromFile(entity.baseEntity.imagePath).copy()
+
+  val entityImage = entity.attributes.foldLeft(baseImageCopy) {
+    (image, attribute) =>
+      val attributeImage = ImmutableImage.loader.fromFile(attribute.imagePath)
+      image.overlay(attributeImage, 0, 0)
+  }
+  val file = new File(Path.of(folder, s"${entity.id}.png").toString())
+  file.getParentFile().mkdirs()
+  file.createNewFile()
+  val savePath = entityImage.output(PngWriter.NoCompression, file)
+  entity.copy(imagePath = Some(savePath.toString()))
 }
