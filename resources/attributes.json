@@ -1,26 +1,10 @@
 [
     {
-        "imagePath": "imagePath1",
+        "imagePath": "./resources/images/attributes/attributeEyes1.png",
+        "group": "eyes"
+    },
+    {
+        "imagePath": "./resources/images/attributes/attributeHat1.png",
         "group": "hat"
-    },
-    {
-        "imagePath": "imagePath2",
-        "group": "towel"
-    },
-    {
-        "imagePath": "imagePath3",
-        "group": "towel2"
-    },
-    {
-        "imagePath": "imagePath4",
-        "group": "hat"
-    },
-    {
-        "imagePath": "imagePath5",
-        "group": "towel"
-    },
-    {
-        "imagePath": "imagePath6",
-        "group": "towel2"
     }
 ]

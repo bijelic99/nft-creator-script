@@ -5,6 +5,5 @@ import java.io.File
 
 private val configuration = ConfigFactory.parseFile(new File("./resources/script.conf"))
 
-val numberOfEntities = configuration.getLong("numberOfEntities")
-val minAttributes = configuration.getLong("minAttributes")
-val maxAttributes = configuration.getLong("maxAttributes")
+val minAttributes = configuration.getInt("minAttributes")
+val maxAttributes = configuration.getInt("maxAttributes")

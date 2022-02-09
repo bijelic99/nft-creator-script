@@ -1,14 +1,15 @@
 case class Attribute(
-                      imagePath: String,
-                      group: String
-                    )
+    imagePath: String,
+    group: String
+)
 
 case class BaseEntity(
-  imagePath: String
+    imagePath: String
 )
 
 case class Entity(
-                   checksum: String,
-                   imagePath: String,
-                   attributes: Seq[Attribute]
-                 )
+    id: String,
+    baseEntity: BaseEntity,
+    imagePath: Option[String],
+    attributes: Seq[Attribute]
+)
