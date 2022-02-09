@@ -1,7 +1,6 @@
 import $file.Models
 import $file.JsonImplicits
 import $file.Configuration
-import $file.Util
 import $file.ImageProcessing
 import $ivy.`com.typesafe.play::play-json:2.9.2`
 
@@ -9,7 +8,6 @@ import JsonImplicits._
 import play.api.libs.json.Json
 import java.io.FileInputStream
 import Models.{BaseEntity, Attribute, Entity}
-import Util._
 import scala.util.Random
 import java.util.UUID
 import java.io.FileWriter
