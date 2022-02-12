@@ -1,10 +1,77 @@
 [
     {
-        "imagePath": "./resources/images/attributes/attributeEyes1.png",
-        "group": "eyes"
+        "imagePath": "./resources/images/attributes/eyes/eyes1-01.png",
+        "group": "eye",
+        "zIndex": 3
     },
     {
-        "imagePath": "./resources/images/attributes/attributeHat1.png",
-        "group": "hat"
+        "imagePath": "./resources/images/attributes/hats/hat1-01.png",
+        "group": "hat",
+        "zIndex": 4
+    },
+    {
+        "imagePath": "./resources/images/attributes/hats/hat2-01.png",
+        "group": "hat",
+        "zIndex": 4
+    },
+    {
+        "imagePath": "./resources/images/attributes/hats/hat3-01.png",
+        "group": "hat",
+        "zIndex": 4
+    },
+    {
+        "imagePath": "./resources/images/attributes/shirt/shirt1-01.png",
+        "group": "shirt",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/shirt/shirt2-01.png",
+        "group": "shirt",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/shirt/shirt3-01.png",
+        "group": "shirt",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/skin/skin1-01.png",
+        "group": "skin",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/skin/skin2-01.png",
+        "group": "skin",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/skin/skin3-01.png",
+        "group": "skin",
+        "zIndex": -1
+    },
+    {
+        "imagePath": "./resources/images/attributes/backgrounds/background1-01.png",
+        "group": "background",
+        "zIndex": -2
+    },
+    {
+        "imagePath": "./resources/images/attributes/backgrounds/background2-01-01.png",
+        "group": "background",
+        "zIndex": -2
+    },
+    {
+        "imagePath": "./resources/images/attributes/backgrounds/background2-01.png",
+        "group": "background",
+        "zIndex": -2
+    },
+    {
+        "imagePath": "./resources/images/attributes/backgrounds/background3-01.png",
+        "group": "background",
+        "zIndex": -2
+    },
+    {
+        "imagePath": "./resources/images/attributes/backgrounds/background4-01.png",
+        "group": "background",
+        "zIndex": -2
     }
 ]

@@ -1,3 +1,4 @@
 {
-    "imagePath": "./resources/images/baseEntity/entity.png"       
+    "imagePath": "./resources/images/baseEntity/entity2.png",
+    "zIndex": 0       
 }
